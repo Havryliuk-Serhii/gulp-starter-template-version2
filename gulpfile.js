@@ -82,5 +82,5 @@ let{ src, dest, watch, parallel, series } = require('gulp'),
     exports.images = images;
     exports.cleanDist = cleanDist;
 
-    exports.build = series();
-    exports.default = parallel(scripts, sync, watching);
+    exports.build = series(cleanDist, images, build);
+    exports.default = parallel(scripts, styles, sync, watching);
